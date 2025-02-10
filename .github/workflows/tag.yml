@@ -32,8 +32,8 @@ jobs:
 
           git config --global user.email "abc123@gmail.com"
           git config --global user.name "CICD_Pipeline"
-          git clone https://${{ secrets.PAT }}@github.com/openqdev/OpenQ-Helm.git
-          cd OpenQ-Helm/
+          git clone https://${{ secrets.PAT }}@github.com/your-commonbase/commonbase-helm.git
+          cd commonbase-helm/
 
           yq -i '.${{ inputs.APP }}.image.tag = "${{ inputs.VERSION }}"' values-${{ inputs.ENVIRONMENT }}.yaml
 
@@ -41,7 +41,7 @@ jobs:
 
           git add .
           git commit -m "[CIRCLE CI] ${TAG}"
-          git remote set-url origin https://${{ secrets.PAT }}@github.com/openqdev/OpenQ-Helm.git
+          git remote set-url origin https://${{ secrets.PAT }}@github.com/your-commonbase/commonbase-helm.git
           git push
           git tag -f ${TAG}
           git push -f origin ${TAG}
