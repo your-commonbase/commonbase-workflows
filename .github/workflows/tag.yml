@@ -40,7 +40,7 @@ jobs:
           TAG=${{ inputs.ENVIRONMENT }}-$(date +'%Y-%m-%d-%H-%M')
 
           git add .
-          git commit -m "[CIRCLE CI] ${TAG}"
+          git commit -m "[GITHUB ACTIONS] ${TAG}" 
           git remote set-url origin https://${{ secrets.PAT }}@github.com/your-commonbase/commonbase-helm.git
           git push
           git tag -f ${TAG}
